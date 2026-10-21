@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>easylook - webagent view</title>
+    <meta property="og:title" content="easylook - webagent view">
+    <meta property="og:description" content="view your webagent">
+    <meta property="og:image" content="http://easylook.elementfx.com/favicon.png">
+    <meta property="og:url" content="http://easylook.elementfx.com">
+    <meta name="description" content="Webagent viewer!">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+      @font-face {
+         font-family: 'MyFixedsys';
+         src: url('fonts/FSEX302.ttf') format('truetype');
+         font-weight: normal;
+         font-style: normal;
+      }
+
+      body {
+        background-color: black;
+      }
+      span {
+        font-family: 'MyFixedsys';
+        color: white;
+      }    
+    </style>
+    <script> 
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("ua").textContent =
+            "your webagent is: " + navigator.userAgent;
+    });
+    </script>
+   
+  </head>
+  <body>
+    <span id="ua">loading...</span><br>
+    <span>if it never loads, the javascript failed.
+    <noscript>
+       <span>please enable JavaScript to use this.
+    </noscript>
+  </body>
+</html>

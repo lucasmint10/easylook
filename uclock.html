@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>easylook - utc minus 3 clock</title>
+    <meta property="og:title" content="easylook - utc minus 3 clock">
+    <meta property="og:description" content="well, utc minus 3 clock">
+    <meta property="og:image" content="http://easylook.elementfx.com/favicon.png">
+    <meta property="og:url" content="http://easylook.elementfx.com">
+    <meta name="theme-color" content="#eb7a23">
+    <meta name="description" content="Brazil clock!">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+       @font-face {
+          font-family: 'MyFixedsys';
+          src: url('fonts/FSEX302.ttf') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+       }
+
+       body {
+        background-color: black;
+       }
+       span {
+        color: white;
+        font-family: 'MyFixedsys';
+       }
+       #clock {
+        color: white;
+        font-family: 'MyFixedsys';
+       }
+    </style>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+    function updateClock() {
+        const now = new Date();
+
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        const brTime = new Date(utc - 3 * 60 * 60000);
+
+        let hours = brTime.getHours();
+        const minutes = brTime.getMinutes().toString().padStart(2, "0");
+        const seconds = brTime.getSeconds().toString().padStart(2, "0");
+
+        const ampm = hours >= 12 ? "PM" : "AM";
+
+        hours = hours % 12;
+        if (hours === 0) hours = 12;
+
+        document.getElementById("clock").textContent =
+        `time in UTC-3 (brazil): ${hours}:${minutes}:${seconds} ${ampm}`;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    });
+    </script>
+  </head>
+  <body>
+    <div id="clock">loading...</div><br>
+    <span>if it never loads, the javascript failed.</span>
+    <noscript>
+       <span>please enable JavaScript to use this.</span>
+    </noscript>
+  </body>
+</html>
